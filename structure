@@ -1,0 +1,107 @@
+library-api/                                    [ROOT DIRECTORY]
+│
+├── src/                                        [DIRECTORY]
+│   ├── main/                                   [DIRECTORY]
+│   │   ├── java/                               [DIRECTORY]
+│   │   │   └── com/                            [DIRECTORY]
+│   │   │       └── library/                    [DIRECTORY]
+│   │   │           └── api/                    [DIRECTORY - BASE PACKAGE]
+│   │   │               │
+│   │   │               ├── LibraryApiApplication.java              [FILE - Main Class]
+│   │   │               │
+│   │   │               ├── config/                                 [DIRECTORY - Configuration Module]
+│   │   │               │   ├── OpenApiConfig.java                  [FILE]
+│   │   │               │   └── GlobalExceptionHandler.java         [FILE]
+│   │   │               │
+│   │   │               ├── controller/                             [DIRECTORY - Controller Module]
+│   │   │               │   └── BookController.java                 [FILE]
+│   │   │               │
+│   │   │               ├── dto/                                    [DIRECTORY - DTO Module]
+│   │   │               │   ├── BookRequestDto.java                 [FILE]
+│   │   │               │   ├── BookResponseDto.java                [FILE]
+│   │   │               │   └── ErrorResponseDto.java               [FILE]
+│   │   │               │
+│   │   │               ├── entity/                                 [DIRECTORY - Entity Module]
+│   │   │               │   └── Book.java                           [FILE]
+│   │   │               │
+│   │   │               ├── exception/                              [DIRECTORY - Exception Module]
+│   │   │               │   ├── BookNotFoundException.java          [FILE]
+│   │   │               │   └── DuplicateIsbnException.java         [FILE]
+│   │   │               │
+│   │   │               ├── mapper/                                 [DIRECTORY - Mapper Module]
+│   │   │               │   └── BookMapper.java                     [FILE]
+│   │   │               │
+│   │   │               ├── repository/                             [DIRECTORY - Repository Module]
+│   │   │               │   └── BookRepository.java                 [FILE]
+│   │   │               │
+│   │   │               └── service/                                [DIRECTORY - Service Module]
+│   │   │                   ├── BookService.java                    [FILE - Interface]
+│   │   │                   └── impl/                               [DIRECTORY - Implementation Sub-module]
+│   │   │                       └── BookServiceImpl.java            [FILE]
+│   │   │
+│   │   └── resources/                          [DIRECTORY]
+│   │       ├── application.yml                 [FILE - Main Config]
+│   │       ├── application-dev.yml             [FILE - Dev Config]
+│   │       └── application-prod.yml            [FILE - Prod Config]
+│   │
+│   └── test/                                   [DIRECTORY]
+│       └── java/                               [DIRECTORY]
+│           └── com/                            [DIRECTORY]
+│               └── library/                    [DIRECTORY]
+│                   └── api/                    [DIRECTORY - Test Base Package]
+│                       │
+│                       ├── LibraryApiApplicationTests.java         [FILE]
+│                       │
+│                       ├── controller/                             [DIRECTORY - Controller Test Module]
+│                       │   └── BookControllerTest.java             [FILE]
+│                       │
+│                       └── service/                                [DIRECTORY - Service Test Module]
+│                           └── impl/                               [DIRECTORY]
+│                               └── BookServiceImplTest.java        [FILE]
+│
+├── docker/                                     [DIRECTORY - Docker Related Files]
+│   ├── init-scripts/                           [DIRECTORY - DB Init Scripts]
+│   │   └── 01-init.sql                         [FILE]
+│   │
+│   └── nginx/                                  [DIRECTORY - Nginx Config]
+│       ├── nginx.conf                          [FILE]
+│       └── ssl/                                [DIRECTORY - SSL Certificates]
+│
+├── scripts/                                    [DIRECTORY - Utility Scripts]
+│   └── wait-for-it.sh                          [FILE - Bash Script]
+│
+├── backups/                                    [DIRECTORY - DB Backups (auto-generated)]
+│   └── .gitkeep                                [FILE]
+│
+├── logs/                                       [DIRECTORY - Application Logs (auto-generated)]
+│   └── .gitkeep                                [FILE]
+│
+├── .mvn/                                       [DIRECTORY - Maven Wrapper]
+│   └── wrapper/                                [DIRECTORY]
+│       ├── maven-wrapper.jar                   [FILE]
+│       └── maven-wrapper.properties            [FILE]
+│
+├── target/                                     [DIRECTORY - Build Output (auto-generated, gitignored)]
+│
+├── pom.xml                                     [FILE - Maven Configuration]
+├── mvnw                                        [FILE - Maven Wrapper Unix]
+├── mvnw.cmd                                    [FILE - Maven Wrapper Windows]
+│
+├── Dockerfile                                  [FILE - Production Docker Image]
+├── Dockerfile.dev                              [FILE - Development Docker Image]
+├── docker-compose.yml                          [FILE - Dev Docker Compose]
+├── docker-compose.prod.yml                     [FILE - Prod Docker Compose]
+├── .dockerignore                               [FILE - Docker Ignore]
+│
+├── Makefile                                    [FILE - Build Automation]
+│
+├── .env.example                                [FILE - Environment Variables Template]
+├── .env                                        [FILE - Environment Variables (gitignored)]
+│
+├── .gitignore                                  [FILE - Git Ignore]
+├── .gitattributes                              [FILE - Git Attributes]
+│
+├── README.md                                   [FILE - Main Documentation]
+├── README-DOCKER.md                            [FILE - Docker Documentation]
+├── CONTRIBUTING.md                             [FILE - Contributing Guidelines]
+└── LICENSE                                     [FILE - License]

@@ -1,0 +1,51 @@
+services:
+  library-api-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: library-api-dev
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-dev:5432/library_db
+      - SPRING_DATASOURCE_USERNAME=library_user
+      - SPRING_DATASOURCE_PASSWORD=library_pass
+    volumes:
+      - ./src:/app/src
+      - maven-cache:/root/.m2
+    depends_on:
+      postgres-dev:
+        condition: service_healthy
+    networks:
+      - library-network
+    restart: "no"  # Changed from unless-stopped
+
+  postgres-dev:
+    image: postgres:16-alpine
+    container_name: postgres-dev
+    environment:
+      - POSTGRES_DB=library_db
+      - POSTGRES_USER=library_user
+      - POSTGRES_PASSWORD=library_pass
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - library-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U library_user -d library_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  maven-cache:
+  postgres-data:
+
+networks:
+  library-network:
+    driver: bridge

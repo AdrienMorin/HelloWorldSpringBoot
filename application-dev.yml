@@ -1,0 +1,27 @@
+# application-dev.yml
+spring:
+  datasource:
+    url: jdbc:postgresql://library-db-dev:5432/library_db
+    username: library_user
+    password: library_pass
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+
+logging:
+  level:
+    com.library.api: DEBUG
+    org.springframework.web: DEBUG
