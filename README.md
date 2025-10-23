@@ -109,27 +109,29 @@ docker compose down -v
 curl -X POST http://localhost:8080/api/v1/books \
   -H "Content-Type: application/json" \
   -d '{
-    "title": "Clean Code",
-    "author": "Robert C. Martin",
-    "isbn": "978-0132350884",
-    "publishedYear": 2008,
-    "genre": "Programming",
-    "description": "A handbook of agile software craftsmanship"
+    "title": "TEST",
+    "author": "Gang of Four",
+    "isbn": "978-0-20163-361-1",
+    "price": 12,
+    "publicationDate": "2002-05-12",
+    "genre": "Programming"
   }'
 ```
 
 **Response:** `201 Created`
 ```json
 {
-  "id": 1,
-  "title": "Clean Code",
-  "author": "Robert C. Martin",
-  "isbn": "978-0132350884",
-  "publishedYear": 2008,
-  "genre": "Programming",
-  "description": "A handbook of agile software craftsmanship",
-  "createdAt": "2025-01-15T20:43:19.123Z",
-  "updatedAt": "2025-01-15T20:43:19.123Z"
+  "id": 4,
+  "title": "TEST",
+  "author": "Gang of Four",
+  "isbn": "978-0-20163-361-4",
+  "publicationDate": "2002-05-12",
+  "price": 12,
+  "description": null,
+  "pages": null,
+  "publisher": null,
+  "createdAt": "2025-10-23T19:59:52",
+  "updatedAt": "2025-10-23T19:59:52"
 }
 ```
 
@@ -147,25 +149,42 @@ curl -X GET http://localhost:8080/api/v1/books
 [
   {
     "id": 1,
-    "title": "Clean Code",
-    "author": "Robert C. Martin",
-    "isbn": "978-0132350884",
-    "publishedYear": 2008,
-    "genre": "Programming",
-    "description": "A handbook of agile software craftsmanship",
-    "createdAt": "2025-01-15T20:43:19.123Z",
-    "updatedAt": "2025-01-15T20:43:19.123Z"
-  },
-  {
-    "id": 2,
     "title": "Design Patterns",
     "author": "Gang of Four",
-    "isbn": "978-0201633610",
-    "publishedYear": 1994,
-    "genre": "Programming",
-    "description": "Elements of Reusable Object-Oriented Software",
-    "createdAt": "2025-01-15T20:45:30.456Z",
-    "updatedAt": "2025-01-15T20:45:30.456Z"
+    "isbn": "978-0-20163-361-0",
+    "publicationDate": "2002-05-12",
+    "price": 12.00,
+    "description": null,
+    "pages": null,
+    "publisher": null,
+    "createdAt": "2025-10-15T20:59:38",
+    "updatedAt": "2025-10-15T20:59:38"
+  },
+  {
+    "id": 3,
+    "title": "TEST",
+    "author": "Gang of Four",
+    "isbn": "978-0-20163-361-1",
+    "publicationDate": "2002-05-12",
+    "price": 12.00,
+    "description": null,
+    "pages": null,
+    "publisher": null,
+    "createdAt": "2025-10-23T19:57:11",
+    "updatedAt": "2025-10-23T19:57:11"
+  },
+  {
+    "id": 4,
+    "title": "TEST",
+    "author": "Gang of Four",
+    "isbn": "978-0-20163-361-4",
+    "publicationDate": "2002-05-12",
+    "price": 12.00,
+    "description": null,
+    "pages": null,
+    "publisher": null,
+    "createdAt": "2025-10-23T19:59:52",
+    "updatedAt": "2025-10-23T19:59:52"
   }
 ]
 ```
@@ -183,14 +202,16 @@ curl -X GET http://localhost:8080/api/v1/books/1
 ```json
 {
   "id": 1,
-  "title": "Clean Code",
-  "author": "Robert C. Martin",
-  "isbn": "978-0132350884",
-  "publishedYear": 2008,
-  "genre": "Programming",
-  "description": "A handbook of agile software craftsmanship",
-  "createdAt": "2025-01-15T20:43:19.123Z",
-  "updatedAt": "2025-01-15T20:43:19.123Z"
+  "title": "Design Patterns",
+  "author": "Gang of Four",
+  "isbn": "978-0-20163-361-0",
+  "publicationDate": "2002-05-12",
+  "price": 12.00,
+  "description": null,
+  "pages": null,
+  "publisher": null,
+  "createdAt": "2025-10-15T20:59:38",
+  "updatedAt": "2025-10-15T20:59:38"
 }
 ```
 
@@ -214,27 +235,24 @@ curl -X GET http://localhost:8080/api/v1/books/1
 curl -X PUT http://localhost:8080/api/v1/books/1 \
   -H "Content-Type: application/json" \
   -d '{
-    "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
-    "author": "Robert C. Martin",
-    "isbn": "978-0132350884",
-    "publishedYear": 2008,
-    "genre": "Software Engineering",
-    "description": "Updated description with more details"
+    "title": "TEST",
+    "author": "Gang of Four",
+    "isbn": "978-0-20163-361-1",
+    "price": 12,
+    "publicationDate": "2002-05-12",
+    "genre": "Programming"
   }'
 ```
 
 **Response:** `200 OK`
 ```json
 {
-  "id": 1,
-  "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
-  "author": "Robert C. Martin",
-  "isbn": "978-0132350884",
-  "publishedYear": 2008,
-  "genre": "Software Engineering",
-  "description": "Updated description with more details",
-  "createdAt": "2025-01-15T20:43:19.123Z",
-  "updatedAt": "2025-01-15T20:55:00.789Z"
+  "title": "TEST",
+  "author": "Gang of Four",
+  "isbn": "978-0-20163-361-1",
+  "price": 12,
+  "publicationDate": "2002-05-12",
+  "genre": "Programming"
 }
 ```
 
@@ -335,73 +353,6 @@ curl -X GET "http://localhost:8080/api/v1/books/search/author?author=martin"
 ```
 
 ---
-
-## ❌ Validation Error Examples
-
-### Invalid Book Creation (Missing Required Fields)
-
-**Request:**
-```bash
-curl -X POST http://localhost:8080/api/v1/books \
-  -H "Content-Type: application/json" \
-  -d '{
-    "title": "",
-    "author": "J",
-    "isbn": "invalid",
-    "publishedYear": 2050
-  }'
-```
-
-**Response:** `400 Bad Request`
-```json
-{
-  "timestamp": "2025-01-15T21:10:00.000Z",
-  "status": 400,
-  "error": "Bad Request",
-  "message": "Validation failed",
-  "errors": {
-    "title": "Title is required and cannot be blank",
-    "author": "Author name must be between 2 and 100 characters",
-    "isbn": "ISBN must follow the format XXX-XXXXXXXXXX",
-    "publishedYear": "Published year cannot be in the future"
-  },
-  "path": "/api/v1/books"
-}
-```
-
----
-
-## 🧪 Testing with Postman/Insomnia
-
-### Complete Test Scenario
-
-```bash
-# 1. Create several books
-curl -X POST http://localhost:8080/api/v1/books -H "Content-Type: application/json" \
--d '{"title":"The Pragmatic Programmer","author":"Andrew Hunt","isbn":"978-0135957059","publishedYear":2019,"genre":"Programming","description":"Your journey to mastery"}'
-
-curl -X POST http://localhost:8080/api/v1/books -H "Content-Type: application/json" \
--d '{"title":"Domain-Driven Design","author":"Eric Evans","isbn":"978-0321125217","publishedYear":2003,"genre":"Software Architecture","description":"Tackling Complexity in the Heart of Software"}'
-
-curl -X POST http://localhost:8080/api/v1/books -H "Content-Type: application/json" \
--d '{"title":"Refactoring","author":"Martin Fowler","isbn":"978-0134757599","publishedYear":2018,"genre":"Programming","description":"Improving the Design of Existing Code"}'
-
-# 2. Get all books
-curl -X GET http://localhost:8080/api/v1/books
-
-# 3. Search by keyword
-curl -X GET "http://localhost:8080/api/v1/books/search/title?title=design"
-
-# 4. Update a book (replace ID 1 with actual ID from response)
-curl -X PUT http://localhost:8080/api/v1/books/1 -H "Content-Type: application/json" \
--d '{"title":"The Pragmatic Programmer (2nd Edition)","author":"Andrew Hunt","isbn":"978-0135957059","publishedYear":2019,"genre":"Programming","description":"Updated edition"}'
-
-# 5. Delete a book
-curl -X DELETE http://localhost:8080/api/v1/books/1
-
-# 6. Verify deletion
-curl -X GET http://localhost:8080/api/v1/books/1
-```
 
 ---
 
